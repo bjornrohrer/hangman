@@ -22,7 +22,4 @@ end
 # Put the letter that the user has guessed into an array. 
 # compare the array of letters the user has guessed to the random_word
 
-new_game = Hangman.new
-new_game.random_word
-new_game.user_letter
 
