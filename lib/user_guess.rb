@@ -9,7 +9,7 @@ class Hangman
 
   def user_letter
     puts "Guess a letter"
-    letter = gets.chomp.downcase 
+    @letter = gets.chomp.downcase 
     if @random_word.include?(letter)
       puts "Correct #{letter} was included in the word."
     else 
