@@ -1,4 +1,6 @@
-class Hangman
+# frozen_string_literal: true
+
+class Hangman # rubocop:disable Style/Documentation
   MAX_GUESSES = 10
 
   def initialize
@@ -16,7 +18,7 @@ class Hangman
     @random_word
   end
 
-  def user_letter
+  def user_letter # rubocop:disable Metrics/MethodLength
     puts 'Guess a letter'
     letter = gets.chomp.downcase
     if @guessed_letters.include?(letter)
@@ -46,7 +48,7 @@ class Hangman
   end
 
   def game_over?
-    @word_progress.join == @random_word || @remaining_guesses == 0
+    @word_progress.join == @random_word || @remaining_guesses.zero?
   end
 
   def display_result
