@@ -16,12 +16,19 @@ class Hangman
 
   def letter_included
     if @random_word.include?(@letter)
-      puts "Correct #{letter} was included in the word."
+      puts "Correct #{@letter} was included in the word."
     else
-      puts "Wrong #{letter} was not included in the word"
+      puts "Wrong #{@letter} was not included in the word"
     end
   end
+
+  def play
+    letter_included while random_word != user_letter
+  end
 end
+
+new_game = Hangman.new
+new_game.play
 
 # Add a loop so the game continues to run until either the word is guessed or the user is out of guesses.
 # Put the letter that the user has guessed into an array.
