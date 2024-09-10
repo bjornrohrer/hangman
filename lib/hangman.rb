@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Hangman
+class Hangman # rubocop:disable Style/Documentation
   MAX_GUESSES = 6
 
   def initialize
@@ -28,7 +28,7 @@ class Hangman
     @random_word
   end
 
-  def user_letter
+  def user_letter # rubocop:disable Metrics/MethodLength
     puts 'Guess a letter'
     letter = gets.chomp.downcase
     if @guessed_letters.include?(letter)
