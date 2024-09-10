@@ -12,7 +12,10 @@ class Hangman
   def user_letter
     puts 'Guess a letter'
     @letter = gets.chomp.downcase
-    if @random_word.include?(letter)
+  end
+
+  def letter_included
+    if @random_word.include?(@letter)
       puts "Correct #{letter} was included in the word."
     else
       puts "Wrong #{letter} was not included in the word"
