@@ -1,9 +1,11 @@
 class Hangman
   MAX_GUESSES = 10
 
-  @user_guess = []
-
-  @random_word = []
+  def initialize
+    @guessed_letters = []
+    remaining_guesses = MAX_GUESSES
+    @word_progress = []
+  end
 
   def random_word
     words = File.readlines('google-10000-english-no-swears.txt').map(&:strip)
