@@ -3,7 +3,7 @@ class Hangman
 
   def initialize
     @guessed_letters = []
-    remaining_guesses = MAX_GUESSES
+    @remaining_guesses = MAX_GUESSES
     @word_progress = []
   end
 
@@ -26,22 +26,49 @@ class Hangman
       if @random_word.include?(letter)
         puts "Correct! '#{letter}' is in the word."
         update_word_progress(letter)
+      else
+        @remaining_guesses -= 1
+        puts "Wrong! '#{letter}' is not in the word. You have #{@remaining_guesses} guesses left."
       end
     end
   end
 
-  def letter_included
-    if @random_word.include?(letter)
-      puts "Correct #{letter} was included in the word."
+  def update_word_progress(letter)
+    @random_word.chars.each_with_index do |char, index|
+      @word_progress[index] = letter if char == letter
+    end
+  end
+
+  def display_game_state
+    puts "\nWord: #{@word_progress.join(' ')}"
+    puts "Guessed letters: #{@guessed_letters.join(', ')}"
+    puts "Remaining guesses: #{@remaining_guesses}"
+  end
+
+  def game_over?
+    @word_progress.join == @random_word || @remaining_guesses == 0
+  end
+
+  def display_result
+    if @word_progress.join == @random_word
+      puts "Congratulations! You've guessed the word: #{@random_word}"
     else
-      puts "Wrong #{letter} was not included in the word"
+      puts "Game over! The word was: #{@random_word}"
     end
   end
 
   def play
-    letter_included while random_word != user_letter
+    random_word
+    until game_over?
+      display_game_state
+      user_letter
+    end
+    display_result
   end
 end
+
+new_game = Hangman.new
+new_game.play
 
 # Add a loop so the game continues to run until either the word is guessed or the user is out of guesses.
 # Put the letter that the user has guessed into an array.
