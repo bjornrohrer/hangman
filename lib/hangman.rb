@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Hangman
   MAX_GUESSES = 6
 
@@ -27,7 +29,7 @@ class Hangman
   end
 
   def user_letter
-    puts "Guess a letter"
+    puts 'Guess a letter'
     letter = gets.chomp.downcase
     if @guessed_letters.include?(letter)
       puts "You've already guessed that letter. Try again."
@@ -61,7 +63,7 @@ class Hangman
   end
 
   def game_over?
-    @word_progress.join == @random_word || @remaining_guesses == 0
+    @word_progress.join == @random_word || @remaining_guesses.zero?
   end
 
   def display_result
