@@ -1,4 +1,6 @@
 class Hangman
+  MAX_GUESSES = 10
+
   def random_word
     words = File.readlines('google-10000-english-no-swears.txt').map(&:strip)
     @valid_words = words.select { |word| (5..12).include?(word.length) }
