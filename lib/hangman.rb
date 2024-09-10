@@ -18,14 +18,23 @@ class Hangman
 
   def user_letter
     puts 'Guess a letter'
-    @letter = gets.chomp.downcase
+    letter = gets.chomp.downcase
+    if @guessed_letters.include?(letter)
+      puts 'You have already guessed that letter, Try again.'
+    else
+      @guessed_letters << letter
+      if @random_word.include?(letter)
+        puts "Correct! '#{letter}' is in the word."
+        update_word_progress(letter)
+      end
+    end
   end
 
   def letter_included
-    if @random_word.include?(@letter)
-      puts "Correct #{@letter} was included in the word."
+    if @random_word.include?(letter)
+      puts "Correct #{letter} was included in the word."
     else
-      puts "Wrong #{@letter} was not included in the word"
+      puts "Wrong #{letter} was not included in the word"
     end
   end
 
