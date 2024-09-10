@@ -69,7 +69,3 @@ end
 
 new_game = Hangman.new
 new_game.play
-
-# Add a loop so the game continues to run until either the word is guessed or the user is out of guesses.
-# Put the letter that the user has guessed into an array.
-# compare the array of letters the user has guessed to the random_word
