@@ -10,7 +10,7 @@ class Hangman
     @valid_words = words.select { |word| (5..12).include?(word.length) }
     @random_word = @valid_words.sample
     puts "The word is #{@random_word.length} letters long"
-    @random_word
+    @random_word = []
   end
 
   def user_letter
@@ -32,7 +32,7 @@ class Hangman
 end
 
 new_game = Hangman.new
-new_game.play
+new_game.random_word
 
 # Add a loop so the game continues to run until either the word is guessed or the user is out of guesses.
 # Put the letter that the user has guessed into an array.
